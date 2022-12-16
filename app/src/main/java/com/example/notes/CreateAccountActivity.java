@@ -1,8 +1,8 @@
 package com.example.notes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -12,20 +12,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.regex.Pattern;
-
-import javax.xml.validation.Validator;
-
-public class MainActivity extends AppCompatActivity {
+public class CreateAccountActivity extends AppCompatActivity {
 
     EditText emailEditText, passwordEditText, confirmPasswordEditText;
-    MaterialButton createAccountButton;
+    Button createAccountButton;
     ProgressBar progressBar;
     TextView loginButtonTextView;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         createAccountButton.setOnClickListener(v-> createAccount());
         loginButtonTextView.setOnClickListener(v-> finish());
-
 //        final MaterialButton materialButton = findViewById(R.id.register_button);
 //        materialButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -52,21 +48,40 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
     }
-    protected void createAccount(){
+    void createAccount(){
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
 
         boolean isValidated = validateData(email, password, confirmPassword);
-        if(isValidated){
+        if(!isValidated){
             return;
         }
-        createAccountInFirabase(email,password);
+        createAccountInFirebase(email,password);
 
     }
 
-    protected void createAccountInFirabase(String email, String password){
+    void createAccountInFirebase(String email, String password){
+        changeInProgress(true);
 
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(CreateAccountActivity.this,
+                new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        changeInProgress(false);
+                        if(task.isSuccessful()){
+                            //creating account is done
+                            Toast.makeText(CreateAccountActivity.this, "Your account has been created", Toast.LENGTH_SHORT).show();
+                            firebaseAuth.getCurrentUser().sendEmailVerification();
+                            firebaseAuth.signOut();
+                            finish();
+                        }else{
+                            //failure
+                            Toast.makeText(CreateAccountActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
     }
     void changeInProgress(boolean inProgress){
