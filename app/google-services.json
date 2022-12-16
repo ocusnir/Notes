@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "932163450122",
-    "project_id": "fastnote-c2ba1",
-    "storage_bucket": "fastnote-c2ba1.appspot.com"
+    "project_number": "708619004593",
+    "project_id": "fastnote-aa65f",
+    "storage_bucket": "fastnote-aa65f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:932163450122:android:31b782ccc2993039e836f3",
+        "mobilesdk_app_id": "1:708619004593:android:3bae7eefcb9606726a9090",
         "android_client_info": {
           "package_name": "com.example.notes"
         }
       },
       "oauth_client": [
         {
-          "client_id": "932163450122-16em6kss9iglvqu3opf6ubr4pinuj20q.apps.googleusercontent.com",
+          "client_id": "708619004593-d4l3q4sjoutq4vfre6adufdi535a9jtk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAQF9BUTaRYhcMUDnmtIihPMhJf22tfqzA"
+          "current_key": "AIzaSyCBn7D0fXUUF01nAUAKIpF2dCd1lG0iaEY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "932163450122-16em6kss9iglvqu3opf6ubr4pinuj20q.apps.googleusercontent.com",
+              "client_id": "708619004593-d4l3q4sjoutq4vfre6adufdi535a9jtk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
