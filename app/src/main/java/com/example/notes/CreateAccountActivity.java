@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,13 +63,13 @@ public class CreateAccountActivity extends AppCompatActivity {
 //                        changeInProgress(false);
                         if(task.isSuccessful()){
                             //creating account is done
-                            Toast.makeText(CreateAccountActivity.this, "Your account has been created", Toast.LENGTH_SHORT).show();
+                            Utility.showToast(CreateAccountActivity.this, "Your account has been created");
                             firebaseAuth.getCurrentUser().sendEmailVerification();
                             firebaseAuth.signOut();
                             finish();
                         }   else{
                             //failure
-                            Toast.makeText(CreateAccountActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            Utility.showToast(CreateAccountActivity.this, task.getException().getLocalizedMessage());
                         }
                     }
                 });
