@@ -7,13 +7,14 @@
     <string name="confirm_password">Confirm password</string>
     <string name="create_account">Create Account</string>
     <string name="action_sign_in_short">Login</string>
+    <string name="page_title">Save</string>
     <string name="title">Create a FastNote account</string>
     <string name="login_title">FastNote</string>
     <string name="password_confirmation">Enter your password</string>
     <string name="enter_email">Enter your email</string>
     <string name="addition_text">Already have an account?</string>
-    <string name="additional_text_login">Do not have an account yet?</string>
-    <string name="sign_up">Sign Up?</string>
+    <string name="additional_text_login">Don`t have an account yet?</string>
+    <string name="sign_up">Sign Up</string>
     <string name="title_desc">Make your notes fast with FastNote,whatever place you are</string>
     <string name="login_failed">"Login failed"</string>
     <!-- TODO: Remove or change this placeholder text -->

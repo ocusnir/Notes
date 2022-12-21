@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="my_primary">#F9A826</color>
+    <color name="my_primary">#EE6D50</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="primary_dark">#000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="fields_color">#ADADAD</color>
+    <color name="primary_dark">#262626</color>
+    <color name="primary_light">#DCDCDC</color>
+
+    <color name="white">#FCFCFC</color>
+    <color name="fields_color">#DDDDDD</color>
     <color name="splash_background">#F3F3F3</color>
-    <color name="notes">#F9A826</color>
+    <color name="notes">#EE6D50</color>
     <color name="progress_bar">#323232</color>
 </resources>

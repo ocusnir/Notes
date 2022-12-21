@@ -34,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_Bar);
         sign_up  = findViewById(R.id.sign_up_text_button);
 
-
         loginBtn.setOnClickListener((v)-> loginUser());
         sign_up.setOnClickListener((v)-> startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class)));
 
@@ -66,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(firebaseAuth.getCurrentUser().isEmailVerified()){
                         //go to mainActivity
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
                     }else{
                         Utility.showToast(LoginActivity.this, "Account with this email is not found!");
                     }
