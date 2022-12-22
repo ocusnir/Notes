@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/title_bar_layout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/page_title"
-        android:text="@string/page_title"
-        android:textColor="@color/my_primary"
-        android:textSize="32sp"
-        android:fontFamily="@font/inter_thin"/>
+        <TextView
+            android:id="@+id/page_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_light"
+            android:text="@string/page_title"
+            android:textColor="@color/my_primary"
+            android:textSize="16sp" />
 
         <ImageButton
             android:layout_width="36dp"
@@ -31,7 +31,6 @@
             android:layout_centerVertical="true"
             app:tint="@color/my_primary"
             android:background="?attr/selectableItemBackgroundBorderless"/>
-
 
     </RelativeLayout>
 
@@ -64,7 +63,7 @@
             android:background="@color/white"
             android:textSize="20sp"
             android:gravity="top"
-            android:minLines="15"
+            android:minLines="100"
             android:fontFamily="@font/inter_light"
             android:layout_marginVertical="8dp"
             android:padding="12dp"
