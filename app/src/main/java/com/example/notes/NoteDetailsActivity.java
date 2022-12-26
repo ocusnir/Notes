@@ -4,7 +4,13 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
 
 public class NoteDetailsActivity extends AppCompatActivity {
 
@@ -28,8 +34,38 @@ public class NoteDetailsActivity extends AppCompatActivity {
         String noteTitle = NoteTitle.getText().toString();
         String noteDesc = NoteDescription.getText().toString();
 
-        if(noteTitle==null || noteTitle.isEmpty()){
-            NoteTitle.setText("");
+        if(noteTitle == null || noteTitle.isEmpty()){
+            NoteTitle.setError("Title is required");
+            return;
         }
+
+        Note note = new Note();
+        note.setTitle(noteTitle);
+        note.setDescription(noteDesc);
+        note.setTimestamp(Timestamp.now());
+
+
+        saveNoteToFirebase(note);
     }
+
+    void saveNoteToFirebase(Note note){
+        DocumentReference documentReference;
+        documentReference = Utility.getCollectionReferenceForNotes().document();
+
+        documentReference.set(note).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+            if(task.isSuccessful()){
+                //notes has been added
+                Utility.showToast(NoteDetailsActivity.this, "Your note has been successfully added");
+                finish();
+                }else{
+                    //error
+                Utility.showToast(NoteDetailsActivity.this, "Something went wrong!");
+                }
+            }
+        });
+    }
+
+
 }

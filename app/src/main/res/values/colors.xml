@@ -11,5 +11,5 @@
     <color name="fields_color">#DDDDDD</color>
     <color name="splash_background">#F3F3F3</color>
     <color name="notes">#EE6D50</color>
-    <color name="progress_bar">#323232</color>
+    <color name="progress_bar_color">#323232</color>
 </resources>

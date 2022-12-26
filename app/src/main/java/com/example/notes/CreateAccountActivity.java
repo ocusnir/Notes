@@ -2,6 +2,7 @@ package com.example.notes;
 
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -19,7 +20,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     EditText emailEditText, passwordEditText, confirmPasswordEditText;
     Button createAccountButton;
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
     TextView loginButtonTextView;
 
     @Override
@@ -31,11 +32,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password_edit_text);
         confirmPasswordEditText = findViewById(R.id.confirm_password_edit_text);
         createAccountButton = findViewById(R.id.register_button);
-        progressBar = findViewById(R.id.progress_Bar);
+        progressBar = findViewById(R.id.progressBar);
         loginButtonTextView = findViewById(R.id.login_text_button);
 
-        createAccountButton.setOnClickListener(v-> createAccount());
-        loginButtonTextView.setOnClickListener(v-> finish());
+        createAccountButton.setOnClickListener((v)-> createAccount());
+        loginButtonTextView.setOnClickListener((v)-> finish());
 
     }
 
@@ -53,14 +54,14 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
      void createAccountInFirebase(String email, String password){
-//       changeInProgress(true);
+       changeInProgress(true);
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(CreateAccountActivity.this,
                 new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-//                        changeInProgress(false);
+                        changeInProgress(false);
                         if(task.isSuccessful()){
                             //creating account is done
                             Utility.showToast(CreateAccountActivity.this, "Your account has been created");
@@ -74,15 +75,15 @@ public class CreateAccountActivity extends AppCompatActivity {
                     }
                 });
     }
-//    void changeInProgress(boolean inProgress){
-//        if(inProgress){
-//            progressBar.setVisibility(View.VISIBLE);
-//            createAccountButton.setVisibility(View.GONE);
-//        }else{
-//            progressBar.setVisibility(View.GONE);
-//            createAccountButton.setVisibility(View.VISIBLE);
-//        }
-//    }
+    private void changeInProgress(boolean inProgress){
+        if(inProgress){
+            progressBar.setVisibility(View.VISIBLE);
+            createAccountButton.setVisibility(View.GONE);
+        }else{
+            progressBar.setVisibility(View.GONE);
+            createAccountButton.setVisibility(View.VISIBLE);
+        }
+    }
 
     boolean validateData(String email, String password, String confirmPassword){
         //validate data that is input by user.

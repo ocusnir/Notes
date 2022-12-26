@@ -2,21 +2,20 @@ package com.example.notes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 public class MainActivity extends AppCompatActivity {
 
-    FloatingActionButton addNoteBtn;
+    TextView addNoteBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addNoteBtn = findViewById(R.id.add_note_btn);
+        addNoteBtn = findViewById(R.id.tap_btn_text);
 
         addNoteBtn.setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, NoteDetailsActivity.class)));
 
